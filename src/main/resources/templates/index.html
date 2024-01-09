@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block
+	th:replace="~{/layout/layoutV1 :: setContent(~{this :: title}, ~{this :: content})}">
+	
+	<th:block th:fragment="title">
+		  <title>RM 솔루션</title>
+	</th:block>
+	
+	
+	<th:block th:fragment="content">
+		<div class="container-fluid">
+	 <section id="hero">
+    <div class="hero-content">
+      <h1>RM solution service</h1>
+      <p>RM 솔루션을 구독하여 더욱 쾌적한 환경을 조성하세요!</p>
+      <a href="#subscribe" th:href="@{/subscription}" class="cta-button">서비스 구독</a>
+    </div>
+  </section>
+		</div>
+	</th:block>
+</th:block>
+
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.rmsolution.domain.subscription.mapper.SolutionMapper">
+
+
+<!-- 구독신청 페이지 들어갈 때  -->
+	<select id="findByAll" resultType="Solution">
+		SELECT solution_id,name,cost,storage_capacity_min,storage_capacity_max,user_count_max
+		FROM solution
+	</select>
+
+</mapper>

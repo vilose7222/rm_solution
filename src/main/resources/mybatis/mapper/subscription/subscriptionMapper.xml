@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.rmsolution.domain.subscription.mapper.SubscriptionMapper">
+
+<!-- 구독 신청 시 데이터 삽입 -->
+	<insert id="setData" parameterType="Subscription">
+		INSERT INTO subscription(subscription_id,
+								 userid,
+							 	 solution_id,
+								 service_type,
+								 storage_capacity,
+								 user_count,
+								 subscription_period,
+								 company_name,
+								 address,
+								 detail_address,
+								 phone_number
+								)
+		VALUES(subscription_id_seq.NEXTVAL,
+               #{userId},
+               #{solutionId},
+               #{serviceType},
+               #{storageCapacity},
+               #{userCount},
+               #{subscriptionPeriod},
+               #{companyName},
+               #{address},
+               #{detailAddress},
+               #{phoneNumber}
+             )
+	</insert>
+	
+	<!-- boolean 처리 위한 resultMap -->
+	<resultMap id="checkUserIdExistsResultMap" type="java.lang.Boolean">
+    	<result column="RESULT" property="value" />
+	</resultMap>
+	
+	
+	<!-- id가 존재하는지 확인 -->
+	<select id="checkId" resultType="boolean" parameterType = "Subscription">
+		select CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS result
+		from subscription
+		where userid = #{userId}
+	</select>
+
+
+<!-- 
+	<update id="update" parameterType="Subscription">
+		UPDATE member
+		SET passwd = #{passwd}, email = #{email}
+		WHERE id = #{id}
+	</update>
+ -->
+
+</mapper>

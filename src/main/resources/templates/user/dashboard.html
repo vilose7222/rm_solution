@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block
+	th:replace="~{/layout/layoutV2 :: setContent(~{this :: title}, ~{this :: content})}">
+
+	<title th:fragment="title">:: 구독 신청 ::</title>
+
+	<div class="container-fluid" th:fragment="content">
+
+
+
+ <div class="container">
+        <h1>User Dashboard</h1>
+
+        <div class="subscription-card">
+            <h3>User Information</h3>
+            <table class="subscription-table">
+                <tr>
+                    <th>User ID</th>
+                    <td th:text="${dashboardInfo.userid}"></td>
+                </tr>
+                <tr>
+                    <th>Service Type</th>
+                    <td th:text="${dashboardInfo.serviceType}"></td>
+                </tr>
+                <tr>
+                    <th>Storage Capacity</th>
+                    <td th:text="${dashboardInfo.storageCapacity}"></td>
+                </tr>
+                <tr>
+                    <th>User Count</th>
+                    <td th:text="${dashboardInfo.userCount}"></td>
+                </tr>
+                <tr>
+                    <th>Subscription Period</th>
+                    <td th:text="${dashboardInfo.subscriptionPeriod}"></td>
+                </tr>
+                <tr>
+                    <th>Subscription Date</th>
+                    <td th:text="${dashboardInfo.subscriptionDate}"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Add other sections as needed -->
+
+    </div>
+
+
+
+		</div>
+
+
+
+
+
+</th:block>
+
+</html>
