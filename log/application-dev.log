@@ -1720,3 +1720,22 @@ This generated password is for development use only. Your security configuration
 [2024-01-10 02:12:07][restartedMain][INFO ](StartupInfoLogger.java: logStarted(): 56) : Started RmsolutionApplication in 0.59 seconds (process running for 8039.71)
 [2024-01-10 02:12:07][restartedMain][INFO ](ConditionEvaluationDeltaLoggingListener.java: onApplicationEvent(): 63) : Condition evaluation unchanged
 [2024-01-10 02:15:22][File Watcher][INFO ](LocalDevToolsAutoConfiguration.java: onApplicationEvent(): 211) : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+[2024-01-10 02:15:22][restartedMain][INFO ](StartupInfoLogger.java: logStarting(): 50) : Starting RmsolutionApplication using Java 17.0.6 with PID 22396 (C:\ezen-fullstack\workspace\rm_solution\bin\main started by ydl in C:\ezen-fullstack\workspace\rm_solution)
+[2024-01-10 02:15:22][restartedMain][INFO ](SpringApplication.java: logStartupProfileInfo(): 662) : No active profile set, falling back to 1 default profile: "dev"
+[2024-01-10 02:15:22][restartedMain][INFO ](TomcatWebServer.java: initialize(): 109) : Tomcat initialized with port 80 (http)
+[2024-01-10 02:15:22][restartedMain][INFO ](DirectJDKLog.java: log(): 173) : Starting service [Tomcat]
+[2024-01-10 02:15:22][restartedMain][INFO ](DirectJDKLog.java: log(): 173) : Starting Servlet engine: [Apache Tomcat/10.1.17]
+[2024-01-10 02:15:22][restartedMain][INFO ](DirectJDKLog.java: log(): 173) : Initializing Spring embedded WebApplicationContext
+[2024-01-10 02:15:22][restartedMain][INFO ](ServletWebServerApplicationContext.java: prepareWebApplicationContext(): 296) : Root WebApplicationContext: initialization completed in 170 ms
+[2024-01-10 02:15:22][restartedMain][WARN ](UserDetailsServiceAutoConfiguration.java: getOrDeducePassword(): 84) : 
+
+Using generated security password: 9d053fc6-5713-4fe0-813e-54eb276ef88c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+[2024-01-10 02:15:22][restartedMain][INFO ](WelcomePageHandlerMapping.java: <init>(): 59) : Adding welcome page template: index
+[2024-01-10 02:15:22][restartedMain][INFO ](DefaultSecurityFilterChain.java: <init>(): 54) : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1ef8fcb9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@48cdb2e2, org.springframework.security.web.context.SecurityContextHolderFilter@3f32992f, org.springframework.security.web.header.HeaderWriterFilter@15cae927, org.springframework.web.filter.CorsFilter@56a30f41, org.springframework.security.web.authentication.logout.LogoutFilter@2c033e4a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@617a766d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45926e3a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@63e79ab1, org.springframework.security.web.access.ExceptionTranslationFilter@4a0dc830]
+[2024-01-10 02:15:22][restartedMain][INFO ](OptionalLiveReloadServer.java: startServer(): 59) : LiveReload server is running on port 35729
+[2024-01-10 02:15:22][restartedMain][INFO ](TomcatWebServer.java: start(): 241) : Tomcat started on port 80 (http) with context path ''
+[2024-01-10 02:15:22][restartedMain][INFO ](StartupInfoLogger.java: logStarted(): 56) : Started RmsolutionApplication in 0.309 seconds (process running for 8234.401)
+[2024-01-10 02:15:22][restartedMain][INFO ](ConditionEvaluationDeltaLoggingListener.java: onApplicationEvent(): 63) : Condition evaluation unchanged
