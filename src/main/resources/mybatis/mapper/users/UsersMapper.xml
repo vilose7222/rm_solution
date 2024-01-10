@@ -6,6 +6,14 @@
 <mapper
 	namespace="com.rmsolution.domain.users.mapper.UsersMapper">
 
+	<resultMap id="subscribedResultMap" type="com.rmsolution.domain.users.dto.Users">
+	
+	
+	<!-- 구독여부 boolean타입으로 맵핑 -->
+		<result property="subscribed" column="subscribed" javaType="boolean"/>	
+	</resultMap>
+
+
 	<!-- 회원가입 -->
 	<insert id="create" parameterType="Users">
 		INSERT INTO users(id, name, password, email)
@@ -16,26 +24,30 @@
 		#{email}
 		)
 	</insert>
-
+	
+	<!-- id에 맞는 회원정보 -->
 	<select id="findById" resultType="Users">
 			SELECT
-			id, name,password, email
+			id, name,password, email, subscribed
 			FROM users
 			WHERE id = #{id} 
 		</select>
 
-
-
 	<!-- 로그인 -->
 	<select id="findByIdAndPasswd" resultType="Users">
 		SELECT
-		id, name,password, email
+		id, name,password, email, subscribed
 		FROM users
 		WHERE id =
 		#{id} AND password = #{password}
 	</select>
 
-
+	<!-- 구독여부를 변경(구독 신청시) -->
+	<update id="updateSubscribed" parameterType="String">
+		UPDATE users
+		SET subscribed = '1'
+		WHERE id = #{id}
+	</update>
 
 
 

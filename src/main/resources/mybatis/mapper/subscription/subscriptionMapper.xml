@@ -48,6 +48,27 @@
 	</select>
 
 
+	<!-- 대시보드 들어갈 때 정보 -->
+	<select id="isSubscribed" resultType="Subscription" parameterType="String">
+		select subscription_id,
+			   userid,
+			   solution_id,
+			   service_type,
+			   storage_capacity,
+			   user_count,
+			   subscription_period,
+			   TO_CHAR(subscription_date, 'yyyy"년"MM"월"dd"일"') as subscription_date,
+			   NVL(company_name,'회사명 미입력'),
+			   NVL(address,'주소 미입력'),
+			   NVL(detail_address,'상세주소 미입력'),
+			   NVL(phone_number,'전화번호 미입력')
+		from subscription subs
+			join users u
+				on subs.userid = u.id
+					where subs.userid = #{userId} and u.subscribed = '1'
+	</select>
+
+
 <!-- 
 	<update id="update" parameterType="Subscription">
 		UPDATE member

@@ -32,4 +32,14 @@ public interface SubscriptionMapper {
 	 * @return 이미 존재하면 참, 없으면 거짓
 	 */
 	public boolean checkId(@Param("userId") String userId);
+	
+	/**
+	 * 
+	 * 대시보드 클릭 시 넘어 갈 때 해당하는 회원의 구독 정보 불러오기
+	 * @author 윤동진
+	 * @since  2024. 1. 10.
+	 * @param  userId: 회원 아이디
+	 * @return 해당하는 회원의 구독정보
+	 */
+	public Subscription isSubscribed(@Param("userId") String userId);
 }

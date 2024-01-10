@@ -1,10 +1,14 @@
 package com.rmsolution.domain.subscription.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.rmsolution.domain.subscription.dto.Subscription;
 import com.rmsolution.domain.subscription.mapper.SubscriptionMapper;
+import com.rmsolution.domain.users.mapper.UsersMapper;
 
 import lombok.RequiredArgsConstructor;
 @Service
@@ -20,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class SubscriptionServiceImpl implements SubscriptionService{
 
 	private final SubscriptionMapper subscriptionMapper;
-	
+	private final UsersMapper usersMapper;
 	/**
 	 * 
 	 * 구독 신청 시 데이터를 바인딩
@@ -32,6 +36,7 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 	@Transactional
 	public void setSubscription(Subscription subscription) {
 		subscriptionMapper.setData(subscription);
+		usersMapper.updateSubscribed(subscription.getUserId());
 	}
 	
 	/**
@@ -46,5 +51,42 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 	@Transactional
 	public boolean checkUserIdExists(String userId) {
 	    return subscriptionMapper.checkId(userId);
+	}
+	
+	/**
+	 * 
+	 * 대시보드 이동 회원 인증
+	 * @author 윤동진
+	 * @since  2024. 1. 10.
+	 * @param  userId: 대시보드 이동하고자 하는 회원의 아이디
+	 * @return 해당하는 아이디를 가진 회원의 구독 정보 반환
+	 */
+	@Override
+	@Transactional
+	public Subscription isSubscribedUser(String userId) {
+		return subscriptionMapper.isSubscribed(userId);
+	}
+	
+	/**
+	 * 
+	 * 남은 구독일수 계산 관련 메서드
+	 * @author 윤동진
+	 * @since  2024. 1. 10.
+	 * @param  구독 객체
+	 * @return 남은 구독일자
+	 */
+	@Override
+	public long calculateRemainingDays(Subscription subscription) {
+		//현재 날짜
+		LocalDate currentDate = LocalDate.now();
+		
+		//구독 시작일을 LocalDate로 변환
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년MM월dd일");
+		LocalDate startDate = LocalDate.parse(subscription.getSubscriptionDate(),formatter);
+		
+		//남은 일수 계산
+		long remainingDays = subscription.getSubscriptionPeriod() - currentDate.toEpochDay() + startDate.toEpochDay();
+		subscription.setRemainingDays(remainingDays);
+		return remainingDays;
 	}
 }

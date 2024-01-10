@@ -15,13 +15,43 @@ import com.rmsolution.domain.users.dto.Users;
  */
 @Mapper
 public interface UsersMapper {
-	// 회원가입
+	
+	/**
+	 * 
+	 * 회원가입 시 입력한 정보를 바인딩
+	 * @author 윤동진
+	 * @since  2024. 1. 4.
+	 * @param  users: 회원 객체
+	 */
 	public void create(Users users);
 
-	//id에 해당하는 회원 찾기
+	/**
+	 * 
+	 * 해당하는 id를 가진 회원의 정보 가져오기
+	 * @author 윤동진
+	 * @since  2024. 1. 4.
+	 * @param  id: 회원 아이디
+	 * @return 해당하는 아이디 를 가진 회원 객체
+	 */
 	public Users findById(@Param("id")String id);
 	
-	// 로그인
+	/**
+	 * 
+	 * 로그인 하는 회원의 정보를 검사
+	 * @author 윤동진
+	 * @since  2024. 1. 5.
+	 * @param  id:회원의 아이디
+	 * @param  password: 회원의 비밀번호
+	 * @return 해당하는 id와 password 를 가진 회원 객체
+	 */
 	public Users findByIdAndPasswd(@Param("id") String id, @Param("password") String password);
-
+	
+	/**
+	 * 
+	 * 구독 신청 시 회원의 구독 여부를 false에서 true로 변경
+	 * @author 윤동진
+	 * @since  2024. 1. 10.
+	 * @param  id: 구독 신청을 한 회원의 아이디
+	 */
+	public void updateSubscribed(@Param("id") String id);
 }

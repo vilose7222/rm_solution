@@ -12,15 +12,17 @@
   </th:block>
   
   
-  <!-- CSS -->
+  <!-- CSS , JS -->
    <link rel="stylesheet" href="/css/styles.css">
+   <script defer src="/js/dashboard.js"></script>
   
 </head>
 <body>
   <header>
   <div class="top">
     <a th:if="${session.loginUser} == null" href="#subscribe" class="top-menu" th:href="@{/register}">회원가입</a>
-	<a th:if="session.loginUser != null" class="top-menu" th:text="${session.loginUser != null ? session.loginUser.name + '님 환영합니다!': ''} "> sss</a>
+	<a th:if="session.loginUser != null" class="top-menu" th:text="${session.loginUser != null ?  session.loginUser.name + '님 환영합니다 ': ''} "> sss</a>
+    <a th:if="${session.loginUser} != null" id="checkSubscriptionBtn" href="#subscribe" class="top-menu" th:href="@{/subscription/check}">| 대시보드 |</a>
     <a th:if="${session.loginUser} == null" href="#subscribe" class="top-menu" th:href="@{/login}">로그인</a>
     <a th:if="${session.loginUser} != null" href="#subscribe" class="top-menu" th:href="@{/logout}">로그아웃</a>
   </div>

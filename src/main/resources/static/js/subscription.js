@@ -79,9 +79,7 @@ function handleSubmit(event) {
 		  alert('잘못된 요청입니다. 다시 시도해 주세요.');
 	  } else if(error.message === '409'){
 		  alert('이미 구독중이시군요! 대시보드에서 구독 연장을 해주세요.');
-		  //    대시보드 기능 만들고 링크 다시 설정하기 
-//        window.location.href = "/dashboard/" + formData.get("userId");
-            window.location.href = "/";
+            window.location.href = "/dashboard";
 	  }else{
       	alert('로그인이 되지 않았습니다.');
       window.location.href = "/login";

@@ -28,4 +28,24 @@ public interface SubscriptionService {
 	 * @return 이미 신청했다면 참, 아니면 거짓
 	 */
 	public boolean checkUserIdExists(String userId);
+	
+	/**
+	 * 
+	 * 대시보드 이동하는 회원 인증 메서드
+	 * @author 윤동진
+	 * @since  2024. 1. 10.
+	 * @param  userId: 회원 아이디
+	 * @return 해당하는 회원의 구독 정보
+	 */
+	public Subscription isSubscribedUser(String userId);
+	
+	/**
+	 * 
+	 * 남은 구독일수 계산 관련 메서드
+	 * @author 윤동진
+	 * @since  2024. 1. 10.
+	 * @param  구독 객체
+	 * @return 남은 구독일자
+	 */
+	public long calculateRemainingDays(Subscription subscription);
 }

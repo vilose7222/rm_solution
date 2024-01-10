@@ -34,5 +34,6 @@ public class Subscription {
 	private String address;
 	private String detailAddress;
 	private String phoneNumber;
+	private long remainingDays;
 	
 }

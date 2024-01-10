@@ -11,34 +11,34 @@
 
 
  <div class="container">
-        <h1>User Dashboard</h1>
+        <h1 th:text="${dashboardInfo.userId} + '님의 구독 Dashboard'">User Dashboard</h1>
 
         <div class="subscription-card">
             <h3>User Information</h3>
             <table class="subscription-table">
                 <tr>
-                    <th>User ID</th>
-                    <td th:text="${dashboardInfo.userid}"></td>
-                </tr>
-                <tr>
-                    <th>Service Type</th>
+                    <th>서비스 타입</th>
                     <td th:text="${dashboardInfo.serviceType}"></td>
                 </tr>
                 <tr>
-                    <th>Storage Capacity</th>
-                    <td th:text="${dashboardInfo.storageCapacity}"></td>
+                    <th>스토리지</th>
+                    <td th:text="${dashboardInfo.storageCapacity} + 'TB'"></td>
                 </tr>
                 <tr>
-                    <th>User Count</th>
-                    <td th:text="${dashboardInfo.userCount}"></td>
+                    <th>공유 인원</th>
+                    <td th:text="${dashboardInfo.userCount} + '명'"></td>
                 </tr>
                 <tr>
-                    <th>Subscription Period</th>
-                    <td th:text="${dashboardInfo.subscriptionPeriod}"></td>
+                    <th>구독 신청기간</th>
+                    <td th:text="${dashboardInfo.subscriptionPeriod} + '일'"></td>
                 </tr>
                 <tr>
-                    <th>Subscription Date</th>
+                    <th>구독 시작일</th>
                     <td th:text="${dashboardInfo.subscriptionDate}"></td>
+                </tr>
+                 <tr>
+                    <th>잔여 구독일(일)</th>
+                    <td th:text="${dashboardInfo.remainingDays} + '일'"></td>
                 </tr>
             </table>
         </div>
