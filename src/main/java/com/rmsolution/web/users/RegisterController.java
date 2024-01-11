@@ -1,5 +1,9 @@
 package com.rmsolution.web.users;
 
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -7,7 +11,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rmsolution.domain.users.dto.Users;
@@ -46,6 +52,27 @@ public class RegisterController {
 		Users users = Users.builder().build();
 		model.addAttribute("users", users);
 		return "user/signup";
+	}
+	
+	/**
+	 * 
+	 * 아이디 입력 시 중복체크하기
+	 * @author 윤동진
+	 * @since  2024. 1. 12.
+	 * @param requestBody 클라이언트로부터 전송된 JSON 요청 본문 / 아이디 정보 
+	 * @return ResponseEntity<Object>: 아이디 중복 여부에 따른 Http 응답 상태를 반환하는 객체
+	 */
+	@ResponseBody
+	@PostMapping("/checkExistId")
+	public ResponseEntity<Object> checkExistId(@RequestBody Map<String, String> requestBody) {
+		String id = requestBody.get("id");
+		boolean isExist = usersService.isExistId(id);
+		
+	    if (isExist) {
+	        return ResponseEntity.status(HttpStatus.CONFLICT).build();
+	    } else {
+	        return ResponseEntity.status(HttpStatus.OK).build();
+	    }
 	}
 	
 	/**

@@ -1,12 +1,15 @@
 package com.rmsolution.web.users;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rmsolution.domain.users.dto.LoginForm;
 import com.rmsolution.domain.users.dto.Users;
@@ -69,7 +72,8 @@ public class LoginController {
 		
 		// 회원이 아닌 경우
 		if (loginUser == null) {
-			bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
+			bindingResult.rejectValue("loginFail", "loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
+			log.info("에러명 : {}", bindingResult.getFieldError("loginFail"));
 			return "user/login";
 		}
 		// 회원인 경우
@@ -79,4 +83,40 @@ public class LoginController {
 		log.info("로그인 한 유저의 정보 : {}", loginUser);
 		return "redirect:/";
 	}
+	
+	
+	/**
+	 * 
+	 * 아이디 찾기 클릭시 실행
+	 * @author 윤동진
+	 * @since 2024. 1. 12.
+	 * @return 뷰 이름(아이디 찾기 팝업)
+	 */
+	@GetMapping("/find")
+	public String findMember(Model model) {
+		return "/user/findpopup";
+	}
+	
+	/**
+	 * 
+	 * 아이디 찾기 기능 관련 메서드 (fetch 요청 응답)
+	 * @author 윤동진
+	 * @since  2023. 10. 2.
+	 * @param  name 회원 이름
+	 * @param  email 회원 이메일 
+	 * @return 이름과 이메일에 해당하는 회원 정보 반환
+	 */
+	@GetMapping(value = "/result/{name}/{email}", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public ResponseEntity<Object> resultFind(@PathVariable("name") String name,
+	                                         @PathVariable("email") String email, Model model) {
+	    Users user = usersService.findByNameAndEmail(name, email);
+
+	    if (user != null) {
+	        return ResponseEntity.ok(user);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
+	
 }

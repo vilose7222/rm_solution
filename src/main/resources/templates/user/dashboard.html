@@ -4,22 +4,26 @@
 <th:block
 	th:replace="~{/layout/layoutV2 :: setContent(~{this :: title}, ~{this :: content})}">
 
-	<title th:fragment="title">:: 구독 신청 ::</title>
+	<title th:fragment="title">:: 대시보드 ::</title>
 
 	<div class="container-fluid" th:fragment="content">
 
 
 
- <div class="container">
-        <h1 th:text="${dashboardInfo.userId} + '님의 구독 Dashboard'">User Dashboard</h1>
+		<div class="container">
+			<h1 class="dashboard-h1"
+				th:text="${dashboardInfo.userId} + '님의 Dashboard'">회원아이디</h1>
 
-        <div class="subscription-card">
-            <h3>User Information</h3>
-            <table class="subscription-table">
-                <tr>
-                    <th>서비스 타입</th>
-                    <td th:text="${dashboardInfo.serviceType}"></td>
-                </tr>
+			<div class="dashboard-card">
+				<h3>대시보드 정보</h3>
+				<hr>
+				<table class="dashboard-table">
+					<tr>
+						<input type="hidden" th:value="${dashboardInfo.subscriptionId}" id="subsId">
+						<input type="hidden" th:value="${dashboardInfo.userId}" id="userId">
+						<th>서비스 타입</th>
+						<td th:text="${dashboardInfo.serviceType}"></td>
+					</tr>
                 <tr>
                     <th>스토리지</th>
                     <td th:text="${dashboardInfo.storageCapacity} + 'TB'"></td>
@@ -37,24 +41,38 @@
                     <td th:text="${dashboardInfo.subscriptionDate}"></td>
                 </tr>
                  <tr>
-                    <th>잔여 구독일(일)</th>
+                    <th>잔여 구독일</th>
                     <td th:text="${dashboardInfo.remainingDays} + '일'"></td>
                 </tr>
+                 <tr>
+                    <th>회사명</th>
+                    <td th:text="${dashboardInfo.companyName}"></td>
+                </tr>
+                <tr>
+                    <th>주소</th>
+                    <td th:text="${dashboardInfo.address}"></td>
+                </tr>
+                <tr>
+                    <th>상세주소</th>
+                    <td th:text="${dashboardInfo.detailAddress}"></td>
+                </tr>
+                <tr>
+                    <th>전화번호</th>
+                    <td th:text="${dashboardInfo.phoneNumber}"></td>
+                </tr>
             </table>
+            <p class="duration-guide">🗓구독을 원하는 날짜를누르고 신청 버튼을 눌러주세요!🗓</p>
+		<div class="duration-btns">
+		    <button data-days="30">30일</button>
+		    <button data-days="60">60일</button>
+		    <button data-days="180">180일</button>
+		    <button data-days="365">365일</button>
+		</div>       
+		<p class="durationDays"></p>
+		    <button id="durationBtn">구독 연장</button>
         </div>
-
-        <!-- Add other sections as needed -->
-
     </div>
-
-
-
 		</div>
-
-
-
-
-
 </th:block>
 
 </html>

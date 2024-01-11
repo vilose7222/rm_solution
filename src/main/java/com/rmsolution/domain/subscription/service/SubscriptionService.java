@@ -48,4 +48,15 @@ public interface SubscriptionService {
 	 * @return 남은 구독일자
 	 */
 	public long calculateRemainingDays(Subscription subscription);
+	
+	
+	/**
+	 * 
+	 * 사용자의 구독 연장 신청 시 날짜 계산 
+	 * @author 윤동진
+	 * @since  2024. 1. 11.
+	 * @param  subscription: 대시보드에 드어온 회원의 구독 정보를 담은 객체
+	 */
+	public void updateSubscriptionPeriod(Subscription subscriptoin);
+
 }

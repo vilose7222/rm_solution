@@ -25,6 +25,12 @@
 		)
 	</insert>
 	
+	<select id = "checkExistId" parameterType="String" resultType="boolean">
+		SELECT count(*)
+		FROM users
+		WHERE id = #{id}
+	</select>
+	
 	<!-- id에 맞는 회원정보 -->
 	<select id="findById" resultType="Users">
 			SELECT
@@ -49,8 +55,10 @@
 		WHERE id = #{id}
 	</update>
 
-
-
-
-
+	<!-- 아이디찾기 기능(이름과 이메일) -->
+	<select id="findUser" parameterType="Users">
+		SELECT id 
+		FROM users
+		WHERE name=#{name} AND email=#{email}
+	</select>
 </mapper>

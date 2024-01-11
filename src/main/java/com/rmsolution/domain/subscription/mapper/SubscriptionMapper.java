@@ -42,4 +42,24 @@ public interface SubscriptionMapper {
 	 * @return 해당하는 회원의 구독정보
 	 */
 	public Subscription isSubscribed(@Param("userId") String userId);
+	
+	/**
+	 * 
+	 * 사용자의 구독 연장 신청 시 날짜 계산하기(연장 일 추가, 기존의 구독신청일에 더하기)
+	 * @author 윤동진
+	 * @since  2024. 1. 11.
+	 * @param  subscription: 대시보드에 드어온 회원의 구독 정보를 담은 객체
+	 */
+	public void updateSubscription(Subscription subscription);
+	
+	
+	/**
+	 * 
+	 * 구독 연장 신청 시 신청일과 연장 기간 히스토리 저장
+	 * @author 윤동진
+	 * @since  2024. 1. 11.
+	 * @param  subscription: 대시보드에 드어온 회원의 구독 정보를 담은 객체
+	 */
+	public void setToExtensionHistory(Subscription subscription);
+	
 }

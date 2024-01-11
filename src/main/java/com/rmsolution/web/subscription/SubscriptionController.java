@@ -124,4 +124,24 @@ public class SubscriptionController {
 			}
 	}	
 	
+	/**
+	 * 
+	 * 구독 연장 신청 요청 시 발생
+	 * 기존의 구독 기간에 신청기간 추가 + 연장 히스토리에 신청일과 기간,아이디 기록
+	 * @author 윤동진
+	 * @since  2024. 1. 11.
+	 * @param  subscription: 구독 신청한 정보를 담은 객체
+	 * @return ResponseEntity<Object>: 결과 정보 응답 객체
+	 */
+	@ResponseBody
+	@PostMapping("/extension")
+	public ResponseEntity<Object> updatePeriod(@RequestBody Subscription subscription) {
+	        try {
+	        	subscriptionService.updateSubscriptionPeriod(subscription);
+	        	return ResponseEntity.ok().build();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("구독 연장 실패");
+	            }
+	        }
 }

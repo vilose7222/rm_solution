@@ -8,52 +8,46 @@
 
 	<div class="container-fluid" th:fragment="content">
 
-		<section>
 
-			<div>
-				<div>
-					<div>
-
+		<div class="login-container">
 						<h2>로그인</h2>
 						<hr>
-						<p class="form-group">로그인 후 RM 솔루션의 혜택을 누리세요</p>
+						<p class="login-header">로그인 후 RM 솔루션의 혜택을 누리세요</p>
 
-						<div>
 							<div>
-								<form class="needs-validation" action="#" method="post"
-									th:action="@{/login}" th:object="${loginForm}">
-
+								<form class="needs-validation" action="#" method="post" th:action="@{/login}" th:object="${loginForm}">
 									<div class="form-group">
 										<input type="text" class="form-control" autofocus
-											placeholder="Userid" th:field="*{loginId}">
-										<p th:errors="*{loginId}" th:class="text-danger">입력 오류메시지</p>
+											placeholder="아이디" th:field="*{loginId}">
 									</div>
+									 <div th:if="${#fields.hasErrors('loginFail')}" class="text-danger">
+        								<p th:if="${#fields.errors('loginFail').size() > 0}" th:text="${#fields.errors('loginFail')[0]}"></p>
+    								 </div>
+										<p th:errors="*{loginId}" th:class="text-danger">입력 오류메시지</p>
 									<div class="form-group">
 										<input type="password" class="form-control"
-											placeholder="Password" th:field="*{password}">
-										<p th:errors="*{password}" th:class="text-danger">입력 오류메시지</p>
+											placeholder="비밀번호" th:field="*{password}">
 									</div>
+										<p th:errors="*{password}" th:class="text-danger">입력 오류메시지</p>
 							</div>
-							
 
 							<div class="login btn-group">
 								<button type="submit">로그인</button>
 								<button><a th:href="@{/}">취소</a></button>
 							</div>
 							</form>
-
+						<!-- 회원가입 버튼 -->
 							<div class="signup-group">
-							<span class="signup-group"> 아직 회원이 아니십니까? <a href=""
-								th:href="@{/register}">회원 가입</a>
-							</span>
+								<div class="info-text">
+									<span class="info-text"> 아이디를 잊으셨나요? <a href="" onclick="openPopup()">아이디 찾기</a></span>
+								</div>
+								<div class="info-text">
+									<span class="info-text"> 아직 회원이 아니십니까? <a href="" th:href="@{/register}">회원 가입</a></span>
+								</div>
 							</div>
 						</div>
+					
 					</div>
-				</div>
-			</div>
-	</div>
-	</section>
-	</div>
 
 </th:block>
 

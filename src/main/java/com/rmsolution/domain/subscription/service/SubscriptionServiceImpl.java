@@ -55,7 +55,7 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 	
 	/**
 	 * 
-	 * 대시보드 이동 회원 인증
+	 * 대시보드로 이동하는 회원 인증 (id에 해당하는 회원을 선별하고, 구독 여부를 체크
 	 * @author 윤동진
 	 * @since  2024. 1. 10.
 	 * @param  userId: 대시보드 이동하고자 하는 회원의 아이디
@@ -88,5 +88,19 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 		long remainingDays = subscription.getSubscriptionPeriod() - currentDate.toEpochDay() + startDate.toEpochDay();
 		subscription.setRemainingDays(remainingDays);
 		return remainingDays;
+	}
+	
+	/**
+	 * 
+	 * 사용자의 구독 연장 신청 시 날짜 계산 
+	 * @author 윤동진
+	 * @since  2024. 1. 11.
+	 * @param  subscription: 대시보드에 드어온 회원의 구독 정보를 담은 객체
+	 */
+	@Override
+	@Transactional
+	public void updateSubscriptionPeriod(Subscription subscription) {
+		subscriptionMapper.updateSubscription(subscription);
+		subscriptionMapper.setToExtensionHistory(subscription);
 	}
 }

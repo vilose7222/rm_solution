@@ -28,12 +28,13 @@ public class Subscription {
 	private String serviceType;
 	private String storageCapacity;
 	private String userCount;
-	private int subscriptionPeriod;
+	private long subscriptionPeriod;
 	private String subscriptionDate;
 	private String companyName;
 	private String address;
 	private String detailAddress;
 	private String phoneNumber;
 	private long remainingDays;
+	private long extensionDays;
 	
 }

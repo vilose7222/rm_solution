@@ -23,6 +23,7 @@ public class LoginForm {
 	@NotBlank(message = "비밀번호를 입력하여 주세요")
 	private String password;
 	private Boolean remember;
+	private String loginFail;
 	
 }
 
