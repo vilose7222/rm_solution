@@ -86,7 +86,6 @@ mybatis:
     - classpath:mybatis/mapper/**/*.xml
   type-aliases-package: com.rmsolution.domain.users.dto,
                         com.rmsolution.domain.subscription.dto
-  #com.ezen.go90.domain.member.dto,
                         
 ---
       

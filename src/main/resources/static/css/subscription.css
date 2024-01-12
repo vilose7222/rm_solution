@@ -120,7 +120,7 @@ h1 a {
 #openPopupBtn, .submitBtn, #cancelBtn {
 	padding: 10px 20px;
 	font-size: 16px;
-	background-color: #0e45ebb9;
+	background-color: rgb(34, 179, 111);
 	color: white;
 }
 
@@ -131,7 +131,7 @@ button {
 }
 
 #openPopupBtn:hover, .submitBtn:hover, #cancelBtn:hover {
-	background-color: #8383ee;
+	background-color: rgba(34, 179, 111, 0.753);;
 }
 
 td select {
@@ -216,10 +216,12 @@ td select {
 	background: #666;
 	color: #fff;
 }
-#required-info select{
-	width:158px;
-	height:21px;
+
+#required-info select {
+	width: 158px;
+	height: 21px;
 }
+
 .submitBtn {
 	margin-right: 50px;
 }

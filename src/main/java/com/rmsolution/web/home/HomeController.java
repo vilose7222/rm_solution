@@ -11,7 +11,6 @@ import com.rmsolution.domain.users.dto.Users;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 /**
  * 
  * 홈 이동시 필요한 컨트롤러 (세션 회원 인증)
@@ -20,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
  * @since  2024. 1. 10. (수정)
  * @version 1.0
  */
-@Slf4j
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/")

@@ -9,7 +9,7 @@ import com.rmsolution.domain.subscription.dto.Subscription;
  * 구독 관련 Mybatis mapper클래스
  *
  * @author 윤동진
- * @since  2024. 1. 9.
+ * @since  2024. 1. 8.
  * @version 1.0
  */
 @Mapper

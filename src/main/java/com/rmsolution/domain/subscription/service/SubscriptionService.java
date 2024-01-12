@@ -49,7 +49,6 @@ public interface SubscriptionService {
 	 */
 	public long calculateRemainingDays(Subscription subscription);
 	
-	
 	/**
 	 * 
 	 * 사용자의 구독 연장 신청 시 날짜 계산 
@@ -58,5 +57,4 @@ public interface SubscriptionService {
 	 * @param  subscription: 대시보드에 드어온 회원의 구독 정보를 담은 객체
 	 */
 	public void updateSubscriptionPeriod(Subscription subscriptoin);
-
 }

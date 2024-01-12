@@ -35,7 +35,6 @@ public interface UsersMapper {
 	 */
 	public Users findById(@Param("id")String id);
 	
-	
 	/**
 	 * 
 	 * 회원 가입 시 아이디 중복 체크
@@ -45,7 +44,6 @@ public interface UsersMapper {
 	 * @return 아이디가 DB에 존재하면 true, 없다면 false
 	 */
 	public boolean checkExistId(@Param("id") String id);
-	
 	
 	/**
 	 * 

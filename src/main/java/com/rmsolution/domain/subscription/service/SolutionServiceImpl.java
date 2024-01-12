@@ -36,7 +36,4 @@ public class SolutionServiceImpl implements SolutionService{
 	public List<Solution> getSolutionPlanList() {
 		return solutionMapper.findByAll();
 	}
-	
-	
-	
 }

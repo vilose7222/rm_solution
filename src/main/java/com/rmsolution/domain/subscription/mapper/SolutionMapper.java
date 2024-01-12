@@ -15,12 +15,13 @@ import com.rmsolution.domain.subscription.dto.Solution;
  * @version 1.0
  */
 public interface SolutionMapper {
+	
 	/**
 	 * 
 	 * 솔루션 플랜의 모든 정보를 불러오는 메서드
 	 * @author 윤동진
 	 * @since  2024. 1. 9.
-	 * @return Solution객체의 정보
+	 * @return Solution객체의 정보 ( 보유 상품 리스트 )
 	 */
 	public List<Solution> findByAll();
 }

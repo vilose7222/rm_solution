@@ -7,9 +7,10 @@
 	namespace="com.rmsolution.domain.subscription.mapper.SolutionMapper">
 
 
-<!-- 구독신청 페이지 들어갈 때  -->
+	<!-- 구독신청 페이지 들어갈 때 -->
 	<select id="findByAll" resultType="Solution">
-		SELECT solution_id,name,cost,storage_capacity_min,storage_capacity_max,user_count_max
+		SELECT
+		solution_id,name,cost,storage_capacity_min,storage_capacity_max,user_count_max
 		FROM solution
 	</select>
 

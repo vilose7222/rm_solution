@@ -1,7 +1,6 @@
 .container-fluid {
 	min-height: 100%;
 	position: relative;
-	padding-bottom: 60px;
 }
 
 footer {
@@ -82,7 +81,7 @@ section {
 
 .cta-button {
 	display: inline-block;
-	background-color: #333;
+	background-color: rgb(34, 179, 111);
 	color: #fff;
 	padding: 10px 20px;
 	margin-top: 20px;
@@ -109,19 +108,20 @@ footer {
 	max-height: 80vh;
 }
 
-.register-form,.login-container {
+.register-form, .login-container {
 	margin: 0 auto;
 	width: 45%;
 	margin-top: 50px;
 }
 
-.form-group{
-	width:45%;
-	margin:20px;
-	padding-top:30px;
-	border-bottom:2px solid #adadad;
-	margin:0 auto;
+.form-group {
+	width: 45%;
+	margin: 20px;
+	padding-top: 30px;
+	border-bottom: 2px solid #adadad;
+	margin: 0 auto;
 }
+
 .form-group, h2 {
 	display: flex;
 	justify-content: center;
@@ -131,29 +131,27 @@ footer {
 }
 
 .form-group input {
-	font-size:20px;
-	width:100%;
+	font-size: 20px;
+	width: 100%;
 	height: 20px;
-	border:none;
-	outline:none;
-	margin-bottom:5px;
+	border: none;
+	outline: none;
+	margin-bottom: 5px;
 }
 
-.confirmMsg-container{
-	margin:0 auto;
-	width:45%;
-	margin-top:10px;
-	text-align:center;
+.confirmMsg-container {
+	margin: 0 auto;
+	width: 45%;
+	margin-top: 10px;
+	text-align: center;
 }
 
-.login-header{
-	font-size:20px;
-	font-weight:600;
-	text-align:center;
-	padding-top:30px;
+.login-header {
+	font-size: 20px;
+	font-weight: 600;
+	text-align: center;
+	padding-top: 30px;
 }
-
-
 
 .btn-group {
 	margin-top: 50px;
@@ -171,21 +169,27 @@ footer {
 	color: white;
 }
 
-.btn-group input:hover, .btn-group button:hover, .cta-button:hover {
+.btn-group input:hover, .btn-group button:hover {
 	background: #666;
 	color: #fff;
+}
+
+.cta-button:hover {
+	background-color: rgba(34, 179, 111, 0.753);
 }
 
 .signup-group {
 	text-align: center;
 }
+
 .info-text {
-	margin-bottom:20px;
+	margin-bottom: 20px;
 }
+
 .signup-group a {
 	text-decoration: none;
 	color: #666;
-	border-bottom:2px solid #adadad;
+	border-bottom: 2px solid #adadad;
 	padding: 3px;
 	border-radius: 0px 0px 5px 5px;
 }
@@ -193,7 +197,7 @@ footer {
 .signup-group a:hover {
 	background: #666;
 	color: #fff;
-	border-radius:15px;
+	border-radius: 15px;
 }
 
 .login {

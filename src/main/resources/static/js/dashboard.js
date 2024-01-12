@@ -14,7 +14,6 @@ document.querySelector('#checkSubscriptionBtn').addEventListener('click', async 
 			
 			if(data.dashboardInfo){
 				//대시보드 정보 있을때 (구독여부가 true)
-				alert('구독여부 있으니 링크 넘어감'); //대시보드로 이동
 				window.location.href = "/dashboard";
 			} else {
 				//대시보드 정보 없을때 (구독여부가 false)
@@ -23,7 +22,7 @@ document.querySelector('#checkSubscriptionBtn').addEventListener('click', async 
 			}
 		} else {
 			// HTTP 응답 실패했을 경우
-			alert('HTTP응답 실패',response.status); //이때의 처리는 뭘 해야하지?
+			alert('HTTP응답 실패',response.status); 
 		}
 	}catch (error) {
 		// 여러가지 예외의 발생 시

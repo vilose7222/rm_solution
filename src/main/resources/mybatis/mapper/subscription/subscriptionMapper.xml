@@ -6,87 +6,93 @@
 <mapper
 	namespace="com.rmsolution.domain.subscription.mapper.SubscriptionMapper">
 
-<!-- 구독 신청 시 데이터 삽입 -->
+	<!-- 구독 신청 시 데이터 삽입 -->
 	<insert id="setData" parameterType="Subscription">
-		INSERT INTO subscription(subscription_id,
-								 userid,
-							 	 solution_id,
-								 service_type,
-								 storage_capacity,
-								 user_count,
-								 subscription_period,
-								 company_name,
-								 address,
-								 detail_address,
-								 phone_number
-								)
+		INSERT INTO
+		subscription(subscription_id,
+		userid,
+		solution_id,
+		service_type,
+		storage_capacity,
+		user_count,
+		subscription_period,
+		company_name,
+		address,
+		detail_address,
+		phone_number
+		)
 		VALUES(subscription_id_seq.NEXTVAL,
-               #{userId},
-               #{solutionId},
-               #{serviceType},
-               #{storageCapacity},
-               #{userCount},
-               #{subscriptionPeriod},
-               #{companyName},
-               #{address},
-               #{detailAddress},
-               #{phoneNumber}
-             )
+		#{userId},
+		#{solutionId},
+		#{serviceType},
+		#{storageCapacity},
+		#{userCount},
+		#{subscriptionPeriod},
+		#{companyName},
+		#{address},
+		#{detailAddress},
+		#{phoneNumber}
+		)
 	</insert>
-	
+
 	<!-- boolean 처리 위한 resultMap -->
-	<resultMap id="checkUserIdExistsResultMap" type="java.lang.Boolean">
-    	<result column="RESULT" property="value" />
+	<resultMap id="checkUserIdExistsResultMap"
+		type="java.lang.Boolean">
+		<result column="RESULT" property="value" />
 	</resultMap>
-	
+
 	<!-- id가 존재하는지 확인 -->
-	<select id="checkId" resultType="boolean" parameterType = "Subscription">
-		select CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS result
+	<select id="checkId" resultType="boolean"
+		parameterType="Subscription">
+		select CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS
+		result
 		from subscription
 		where userid = #{userId}
 	</select>
 
 	<!-- 대시보드 들어갈 때 정보 -->
-	<select id="isSubscribed" resultType="Subscription" parameterType="String">
+	<select id="isSubscribed" resultType="Subscription"
+		parameterType="String">
 		select subscription_id,
-			   userid,
-			   solution_id,
-			   service_type,
-			   storage_capacity,
-			   user_count,
-			   subscription_period,
-			   TO_CHAR(subscription_date, 'yyyy"년"MM"월"dd"일"') as subscription_date,
-			   NVL(company_name,'회사명 미입력') as company_name,
-			   NVL(address,'주소 미입력') as address,
-			   NVL(detail_address,'상세주소 미입력')as detail_address,
-			   NVL(phone_number,'전화번호 미입력') as phone_number
+		userid,
+		solution_id,
+		service_type,
+		storage_capacity,
+		user_count,
+		subscription_period,
+		TO_CHAR(subscription_date, 'yyyy"년"MM"월"dd"일"') as subscription_date,
+		NVL(company_name,'회사명 미입력') as company_name,
+		NVL(address,'주소 미입력') as address,
+		NVL(detail_address,'상세주소 미입력')as detail_address,
+		NVL(phone_number,'전화번호 미입력') as phone_number
 		from subscription subs
-			join users u
-				on subs.userid = u.id
-					where subs.userid = #{userId} and u.subscribed = '1'
+		join users u
+		on subs.userid = u.id
+		where subs.userid = #{userId} and u.subscribed = '1'
 	</select>
 
-	<!-- 구독 연장 신청 시  -->
+	<!-- 구독 연장 신청 시 -->
 	<update id="updateSubscription" parameterType="Subscription">
-	    UPDATE subscription
-	    SET extension_days = #{extensionDays}, 
-	        subscription_period = subscription_period + #{extensionDays}
-	    WHERE subscription_id = #{subscriptionId}
+		UPDATE subscription
+		SET extension_days = #{extensionDays},
+		subscription_period = subscription_period + #{extensionDays}
+		WHERE subscription_id = #{subscriptionId}
 	</update>
-	
+
 	<!-- 연장 신청 시 히스토리에 남기기 -->
 	<insert id="setToExtensionHistory" parameterType="Subscription">
-		INSERT INTO extension_history(
-			extension_history_id,
-			subscription_id,
-			request_extension_period,
-			id
+		INSERT INTO
+		extension_history(
+		extension_history_id,
+		subscription_id,
+		request_extension_period,
+		id
 		)
 		VALUES(
-			extension_history_id_seq.NEXTVAL,
-			#{subscriptionId},
-			#{extensionDays},
-			#{userId}
+		extension_history_id_seq.NEXTVAL,
+		#{subscriptionId},
+		#{extensionDays},
+		#{userId}
 		)
 	</insert>
 </mapper>

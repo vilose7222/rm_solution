@@ -8,18 +8,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
+/**
+ * 
+ * 회원 컴포넌트
+ *
+ * @author 윤동진
+ * @since  2024. 1. 3.
+ * @version 1.0
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
 @Builder
-/**
- * 회원 컴포넌트 (BeanValidation 관련 메시지 추가)
- * @author 윤동진
- *
- */
 public class Users {
 	@NotBlank(message = "아이디를 입력하세요.")
 	@Size(min = 6 , max = 12 , message="6~12 자리입니다.")
