@@ -1,5 +1,5 @@
 # RM소프트 지원자 윤동진 테스트 과제입니다.
-
+![](https://velog.velcdn.com/images/vilose7222/post/894ce12d-afc9-4bca-9a89-1e5020912172/image.png)
 
 ## 작업 기간 
 ### 1월 4일 ~ 1월 13일
